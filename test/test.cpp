@@ -34,20 +34,4 @@ TEST_CASE("Test 2", "[flag]"){
 
 	// each section runs the setup code independently to ensure that they don't affect each other
 }
-
-// you must write 5 unique, meaningful tests for credit on the testing portion of this project!
-
 // the provided test from the template is below.
-
-TEST_CASE("Example BST Insert", "[flag]"){
-	/*
-		MyAVLTree tree;   // Create a Tree object
-		tree.insert(3);
-		tree.insert(2);
-		tree.insert(1);
-		std::vector<int> actualOutput = tree.inorder();
-		std::vector<int> expectedOutput = {1, 2, 3};
-		REQUIRE(expectedOutput.size() == actualOutput.size());
-		REQUIRE(actualOutput == expectedOutput);
-	*/
-}
