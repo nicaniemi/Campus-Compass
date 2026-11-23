@@ -11,3 +11,5 @@ Final project for UF COP3530, Fall '26, Kapoor
 - Managing students' classes
 - Opening and closing roads
 - Find the shortest route from residences or study zones to classes on the UF Campus, accounting for closures
+- Main function to process commands and call appropriate methods
+- Catch2 unit tests
