@@ -7,7 +7,7 @@
 
 std::vector<Edge> loadEdges(const std::string& filename)
 {
-  std::ifstream file(filename); // Load the edges.csv file
+  std::ifstream file(filename); // Load the csv file
 
   std::vector<Edge> edges; // Vector to store all the edges of our graph
 

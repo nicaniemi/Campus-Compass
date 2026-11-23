@@ -1,8 +1,10 @@
 #include <iostream>
+#include <vector>
 
-using namespace std;
+#include "data.h"
+#include "loader.h"
 
 int main()
 {
-
+  auto edges = loadEdges("data/edges.csv");
 }
