@@ -14,6 +14,8 @@ class Graph // Graph for all the connections between locations
 
 public:
   Graph(const std::vector<Edge>& edges);
+  const std::vector<Connection>& getNeighbors(int LocationID) const;
+  std::string checkEdgesStatus(int locationID1, int locationID2) const;
 };
 
 

@@ -35,6 +35,7 @@ add_executable(Tests
         src/loader.h
         src/data.h
         src/loader.cpp
+        src/Graph.cpp
         )
         
 target_link_libraries(Tests PRIVATE Catch2::Catch2WithMain) #link catch to test.cpp file

@@ -2,9 +2,10 @@
 #include <iostream>
 #include <vector>
 
-// uncomment and replace the following with your own headers
 #include "data.h"
 #include "loader.h"
+#include "graph.h"
+#include "Connection.h"
 
 namespace
 {
@@ -28,8 +29,6 @@ namespace
   }
 }
 
-
-// the syntax for defining a test is below. It is important for the name to be unique, but you can group multiple tests with [tags]. A test can have [multiple][tags] using that syntax.
 TEST_CASE("Test 1 - Ensure properly loaded data", "[loading]")
 {
   auto loaded = loadEdges("C:/Users/Nicol/CLionProjects/Campus-Connector/data/edges.csv");
@@ -49,4 +48,35 @@ TEST_CASE("Test 2 - Verify first 5 loaded edges", "[loading]")
     REQUIRE(loaded[i].Name_2 == edges[i].Name_2);
     REQUIRE(loaded[i].time == edges[i].time);
   }
+}
+
+TEST_CASE("Test 3 - Verify map built correctly", "[adjacency list]")
+{
+  Graph graph(makeTestEdges());
+
+  const auto& neighbors = graph.getNeighbors(1);
+
+  REQUIRE(neighbors.size() == 3);
+
+  REQUIRE(neighbors[0].destinationID == 2);
+  REQUIRE(neighbors[0].travelTime == 3);
+
+  REQUIRE(neighbors[1].destinationID == 4);
+  REQUIRE(neighbors[1].travelTime == 2);
+
+  REQUIRE(neighbors[2].destinationID == 50);
+  REQUIRE(neighbors[2].travelTime == 4);
+}
+
+TEST_CASE("Test 4 - Verify checkEdges function with open or DNE", "[checkEdges]")
+{
+  Graph graph(makeTestEdges());
+
+  const auto& edge1 = graph.checkEdgesStatus(1, 4);
+  const auto& edge2 = graph.checkEdgesStatus(1, 99);
+  const auto& edge3 = graph.checkEdgesStatus(99, 1);
+
+  REQUIRE(edge1 == "open");
+  REQUIRE(edge2 == "DNE");
+  REQUIRE(edge3 == "DNE");
 }
