@@ -1,4 +1,5 @@
 #include <vector>
+#include <utility>
 #include "Graph.h"
 
 Graph::Graph(const std::vector<Edge>& edges) // Create the graph of all the roads
@@ -36,4 +37,23 @@ std::string Graph::checkEdgesStatus(int locationID1, int locationID2) const
     }
   }
   return "DNE";
+}
+
+void Graph::toggleEdgesClosure(const std::vector<std::pair<int, int>>& edgePairs)
+{
+  for (const auto& edge : edgePairs)
+  {
+    int locationID1 = edge.first;
+    int locationID2 = edge.second;
+
+    auto& current = adjList.at(locationID1);
+    for (auto& neighbor : current)
+    {
+      if (neighbor.destinationID == locationID2)
+      {
+        neighbor.isOpen = !neighbor.isOpen;
+        break;
+      }
+    }
+  }
 }

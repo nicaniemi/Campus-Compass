@@ -80,3 +80,20 @@ TEST_CASE("Test 4 - Verify checkEdges function with open or DNE", "[checkEdges]"
   REQUIRE(edge2 == "DNE");
   REQUIRE(edge3 == "DNE");
 }
+
+TEST_CASE("Test 5 - Verify edges can be opened and closed", "[toggleEdgesClosure]")
+{
+  Graph graph(makeTestEdges());
+
+  graph.toggleEdgesClosure({{1, 4}});
+
+  REQUIRE(graph.checkEdgesStatus(1, 4) == "closed");
+
+  graph.toggleEdgesClosure({{1, 4}});
+
+  REQUIRE(graph.checkEdgesStatus(1, 4) == "open");
+
+  graph.toggleEdgesClosure({{1, 99}});
+
+  REQUIRE(graph.checkEdgesStatus(1, 99) == "DNE");
+}

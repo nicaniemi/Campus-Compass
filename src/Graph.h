@@ -16,6 +16,7 @@ public:
   Graph(const std::vector<Edge>& edges);
   const std::vector<Connection>& getNeighbors(int LocationID) const;
   std::string checkEdgesStatus(int locationID1, int locationID2) const;
+  void toggleEdgesClosure(const std::vector<std::pair<int, int>>& edgePairs);
 };
 
 
